@@ -30,6 +30,7 @@ namespace :nvm do
       execute :mkdir, "-p", "#{fetch(:tmp_dir)}/#{fetch(:application)}/"
       upload! StringIO.new("#!/bin/bash -e\nsource \"#{fetch(:nvm_path)}/nvm.sh\"\nnvm use $NODE_VERSION\nexec \"$@\""), "#{fetch(:tmp_dir)}/#{fetch(:application)}/nvm-exec.sh"
       execute :chmod, "+x", "#{fetch(:tmp_dir)}/#{fetch(:application)}/nvm-exec.sh"
+      execute "#{fetch(:tmp_dir)}/#{fetch(:application)}/nvm-exec.sh"
     end
   end
 end
